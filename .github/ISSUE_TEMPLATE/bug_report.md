@@ -1,29 +1,59 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
----
-
-<!-- ⚠️⚠️ Do Not Delete This! These are comments and will not show up in Preview ⚠️⚠️ -->
-<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
-<!-- Please search existing issues to avoid creating duplicates. -->
-
-**Environment (please complete the following information):**
- - OS (*e.g.,* Windows 10):
- - Extension version (*e.g.,* 1.2.3):
-<!-- The extension version can be found by hovering or selecting "Microsoft Edge Tools for VS Code" in the VS Code Extensions Marketplace panel. -->
-
-**Describe the bug:**
-<!-- A clear and concise description of what the bug is -->
-
-**Repro steps:**
-<!-- Steps to reproduce the behavior. -->
-
-**Expected behavior:**
-<!-- A clear and concise description of what you expected to happen. -->
-
-**Additional context:**
-<!-- Add any other context or about the problem or screenshots here. -->
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge",
+            "request": "launch",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "url": "c:\\Users\\user\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.8\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge in headless mode",
+            "request": "launch",
+            "runtimeArgs": [
+                "--headless",
+                "--remote-debugging-port=9222"
+            ],
+            "url": "c:\\Users\\user\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.8\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "vscode-edge-devtools.debug",
+            "name": "Open Edge DevTools",
+            "request": "attach",
+            "url": "c:\\Users\\user\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.8\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Edge Headless and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge in headless mode",
+                "Open Edge DevTools"
+            ]
+        },
+        {
+            "name": "Launch Edge and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge",
+                "Open Edge DevTools"
+            ]
+        }
+    ]
+}
